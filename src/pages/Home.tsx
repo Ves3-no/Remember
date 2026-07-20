@@ -5,36 +5,38 @@ import type { TypeofRemember, Remember } from "../types";
 import RemembersComp from "../componoments/Remembers";
 
 
-export default function Home({NewID, setNewID, Remembers}: {NewID : number, setNewID: Dispatch<SetStateAction<number>>, Remembers: Remember[] | undefined  }) {
+export default function Home({NewID, setNewID, Remembers, setRemembers }: {NewID : number, setNewID: Dispatch<SetStateAction<number>>, Remembers: Remember[] | undefined, setRemembers : Dispatch<SetStateAction<Remember[] | undefined>>  }) {
   const [Name, setName] = useState<string>()
   const [Value, setValue] = useState<string>()
   const [Type, setType] = useState<TypeofRemember>()
   const createNewRemember = () =>{
-
+    
   }
   return <>
-      <div id="Home" className="text-text font-main px-4 pt-6 flex flex-col">
+      <div id="Home" className="text-text font-main px-4 pt-6 flex flex-col scrollbar-none gap-4">
         <div id="Hearo" className="tracking-[0.03em] ">
           <h1 className="font-mono font-medium text-4xl">REmember</h1>
           <p className="text-text-secondary font-mono">-By Ves3.no</p>
         </div>
-        <div id="New-Remember-Card" className="bg-surface-light">
-            <input type="text" id="Name-Input"/>
-            <div>
-              <select id="Chose-Code/Note">
+        <div id="New-Remember-Card" className="bg-surface-light rounded-2xl border-surface border flex-col px-3 py-4.5">
+            <div className="flex gap-1.5 items-center justify-between w-full py-1 ">
+              <input type="text" id="Name-Input" className="bg-surface border w-full border-background p-3 text-[14px] rounded-lg h-8 placeholder:text-text-secondary text-text hover:outline-brand hover:outline-1 focus:outline-1 focus:outline-brand " placeholder="Name"/>
+              <select id="Chose-Code/Note" className="bg-surface border border-background p-1 text-[14px] rounded-lg h-8 placeholder:text-text-secondary text-text hover:bg-brand focus:bg-brand hover:border-surface focus:border-surface focus:outline-none ">
                 <option value="Code">Code</option>
                 <option value="Note">Note</option>
               </select>
-              <button id="Create">
-
+              <button id="Create" className="text-surface bg-brand h-8 aspect-square flex items-center justify-center rounded-full hover:bg-brand-hover active:bg-brand-hover">
+                  <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M10.5716 13.4284H0V10.5716H10.5716V0H13.4284V10.5716H24V13.4284H13.4284V24H10.5716V13.4284Z"/>
+                  </svg>
               </button>
             </div>
-            <input type="text" id="Code/Notes-Input"/>
+            <textarea id="Code/Notes-Input" className="w-full mt-2.5 bg-surface border border-background p-1.5 text-[14px] rounded-lg h-18 placeholder:text-text-secondary text-text hover:outline-brand hover:outline-1 focus:outline-1 focus:outline-brand resize-none scrollbar-none" />
         </div>
         <div id="Remember-List-Holder">
           <h2 className="tracking-[0.03em] font-mono font-medium text-2xl ">REmembers</h2>
           <div id="Remember-List">
-            <RemembersComp/>
+            <RemembersComp Remembers={Remembers}/>
           </div>
         </div>
       </div>

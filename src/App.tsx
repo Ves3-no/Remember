@@ -14,13 +14,13 @@ export default function App() {
 
 
   return (
-    <div className="bg-background">
+    <div className="bg-background scrollbar-none overflow-scroll">
       <BrowserRouter >
         <Nav SearchInput={SearchInput} setSearchInput={setSearchInput}/>
 
         <Routes>
-          <Route path="/" element={<Home NewID={NewID} setNewID={setNewID} Remembers={Remembers}/>} />
-          <Route path="/search" element={<Search SearchInput={SearchInput} />} />
+          <Route path="/" element={<Home NewID={NewID} setNewID={setNewID} Remembers={Remembers} setRemembers={setRemembers}/>} />
+          <Route path="/search" element={<Search SearchInput={SearchInput} Remembers={Remembers} />} />
         </Routes>
       </BrowserRouter>
     </div>
