@@ -19,16 +19,16 @@ export default function Home({NewID, setNewID, Remembers, setRemembers }: {NewID
       Type: Type,
       Id: NewID
     }
-    const temp: Remember[] = Remembers as []
-    temp.push(NewRemember)
-    setRemembers(temp)
+    setName("")
+    setValue("")
+    setRemembers((prevRemembers) => [...(prevRemembers ?? []), NewRemember])
     setNewID(NewID+1)
   }
   return <>
       <div id="Home" className="text-text font-main px-4 pt-6 flex flex-col scrollbar-none gap-4">
         <div id="Hearo" className="tracking-[0.03em] ">
           <h1 className="font-mono font-medium text-4xl">REmember</h1>
-          <p className="text-text-secondary font-mono">-By Ves3.no</p>
+          <p className="text-text-secondary font-mono">-By <a href="http://ves3.no" className="cursor-pointer hover:text-brand active:text-brand">Ves3.no</a></p>
         </div>
         <div id="New-Remember-Card" className="bg-surface-light rounded-2xl border-surface border flex-col px-3 py-4.5">
             <div className="flex gap-1.5 items-center justify-between w-full py-1 ">
@@ -37,7 +37,7 @@ export default function Home({NewID, setNewID, Remembers, setRemembers }: {NewID
                 <option value="Code">Code</option>
                 <option value="Note">Note</option>
               </select>
-              <button id="Create" onClick={()=> createNewRemember} className="text-surface bg-brand h-8 aspect-square cursor-pointer flex items-center justify-center rounded-full hover:bg-brand-hover active:bg-brand-hover">
+              <button id="Create" onClick={createNewRemember} className="text-surface bg-brand h-8 aspect-square cursor-pointer flex items-center justify-center rounded-full hover:bg-brand-hover active:bg-brand-hover">
                   <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
                     <path d="M10.5716 13.4284H0V10.5716H10.5716V0H13.4284V10.5716H24V13.4284H13.4284V24H10.5716V13.4284Z"/>
                   </svg>
@@ -47,8 +47,8 @@ export default function Home({NewID, setNewID, Remembers, setRemembers }: {NewID
         </div>
         <div id="Remember-List-Holder">
           <h2 className="tracking-[0.03em] font-mono font-medium text-2xl ">REmembers</h2>
-          <div id="Remember-List">
-            <RemembersComp Remembers={Remembers}/>
+          <div id="Remember-List" className="flex flec-col mt-4 overflow-scroll scrollbar-none">
+            <RemembersComp Remembers={Remembers} setRemembers={setRemembers}/>
           </div>
         </div>
       </div>
