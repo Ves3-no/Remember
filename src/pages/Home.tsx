@@ -32,7 +32,7 @@ export default function Home({NewID, setNewID, Remembers, setRemembers, setPopUp
         </div>
         <div id="New-Remember-Card" className="bg-surface-light rounded-2xl border-surface border flex-col px-3 py-4.5">
             <div className="flex gap-1.5 items-center justify-between w-full py-1 ">
-              <input type="text" id="Name-Input" onChange={(e)=> setName(e.currentTarget.value)} className="bg-surface border w-full border-background p-3 text-[14px] rounded-lg h-8 placeholder:text-text-secondary text-text hover:outline-brand hover:outline-1 focus:outline-1 focus:outline-brand " placeholder="Name" value={Name} />
+              <input type="text" id="Name-Input" onChange={(e)=> setName(e.currentTarget.value)} className="bg-surface border w-full border-background p-3 text-[16px] rounded-lg h-8 placeholder:text-text-secondary text-text hover:outline-brand hover:outline-1 focus:outline-1 focus:outline-brand " placeholder="Name" value={Name} />
               <select id="Chose-Code/Note" value={Type} onChange={(e)=> setType(e.currentTarget.value as TypeofRemember)} className="bg-surface border border-background p-1 text-[14px] rounded-lg h-8 placeholder:text-text-secondary text-text hover:bg-brand focus:bg-brand hover:border-surface focus:border-surface focus:outline-none ">
                 <option value="Code">Code</option>
                 <option value="Note">Note</option>
@@ -43,7 +43,7 @@ export default function Home({NewID, setNewID, Remembers, setRemembers, setPopUp
                   </svg>
               </button>
             </div>
-            <textarea id="Code/Notes-Input" onChange={(e)=> setValue(e.currentTarget.value)} value={Value} className="w-full mt-2.5 bg-surface border border-background p-1.5 text-[14px] rounded-lg h-18 placeholder:text-text-secondary text-text hover:outline-brand hover:outline-1 focus:outline-1 focus:outline-brand resize-none scrollbar-none" />
+            <textarea id="Code/Notes-Input" onChange={(e)=> setValue(e.currentTarget.value)} value={Value} className="w-full mt-2.5 bg-surface border border-background p-1.5 text-[16px] rounded-lg h-18 placeholder:text-text-secondary text-text hover:outline-brand hover:outline-1 focus:outline-1 focus:outline-brand resize-none scrollbar-none" />
         </div>
         <div id="Remember-List-Holder">
           <h2 className="tracking-[0.03em] font-mono font-medium text-2xl ">REmembers</h2>
