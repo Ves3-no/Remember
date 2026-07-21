@@ -45,7 +45,7 @@ export default function Home({NewID, setNewID, Remembers, setRemembers, setPopUp
             </div>
             <textarea id="Code/Notes-Input" onChange={(e)=> setValue(e.currentTarget.value)} value={Value} className="w-full mt-2.5 bg-surface border border-background p-1.5 text-[16px] rounded-lg h-18 placeholder:text-text-secondary text-text hover:outline-brand hover:outline-1 focus:outline-1 focus:outline-brand resize-none scrollbar-none" />
         </div>
-        <div id="Remember-List-Holder">
+        <div id="Remember-List-Holder" className="mb-3">
           <h2 className="tracking-[0.03em] font-mono font-medium text-2xl ">REmembers</h2>
           <div id="Remember-List" className="flex flec-col mt-4 overflow-scroll scrollbar-none">
             <RemembersComp Remembers={Remembers} setRemembers={setRemembers} Results={undefined} typeofsort={"All"} setPopUpValue={setPopUpValue} />
