@@ -5,7 +5,7 @@ import type { TypeofRemember, Remember } from "../types";
 import RemembersComp from "../componoments/Remembers";
 
 
-export default function Home({NewID, setNewID, Remembers, setRemembers }: {NewID : number, setNewID: Dispatch<SetStateAction<number>>, Remembers: Remember[] | undefined, setRemembers : Dispatch<SetStateAction<Remember[] | undefined>>  }) {
+export default function Home({NewID, setNewID, Remembers, setRemembers, setPopUpValue }: {NewID : number, setNewID: Dispatch<SetStateAction<number>>, Remembers: Remember[] | undefined, setRemembers : Dispatch<SetStateAction<Remember[] | undefined>>, setPopUpValue: Dispatch<SetStateAction<string>>  }) {
   const [Name, setName] = useState<string>("")
   const [Value, setValue] = useState<string>("")
   const [Type, setType] = useState<TypeofRemember>("Code")
@@ -48,7 +48,7 @@ export default function Home({NewID, setNewID, Remembers, setRemembers }: {NewID
         <div id="Remember-List-Holder">
           <h2 className="tracking-[0.03em] font-mono font-medium text-2xl ">REmembers</h2>
           <div id="Remember-List" className="flex flec-col mt-4 overflow-scroll scrollbar-none">
-            <RemembersComp Remembers={Remembers} setRemembers={setRemembers} Results={undefined} typeofsort={"All"}/>
+            <RemembersComp Remembers={Remembers} setRemembers={setRemembers} Results={undefined} typeofsort={"All"} setPopUpValue={setPopUpValue} />
           </div>
         </div>
       </div>

@@ -6,7 +6,7 @@ import type { Typeof } from "../types";
 import hljs from 'highlight.js';
 import 'highlight.js/styles/github-dark.css';
 
-export default function Remembers({Remembers, setRemembers, typeofsort, Results} : {Remembers : Remember[] | undefined, setRemembers: Dispatch<SetStateAction<Remember[] | undefined>>, typeofsort: Typeof, Results: Remember[] | undefined}) {
+export default function Remembers({Remembers, setRemembers, typeofsort, Results, setPopUpValue} : {Remembers : Remember[] | undefined, setRemembers: Dispatch<SetStateAction<Remember[] | undefined>>, typeofsort: Typeof, Results: Remember[] | undefined, setPopUpValue: Dispatch<SetStateAction<string>>}) {
       useEffect(() => {
     hljs.highlightAll();
   });
@@ -14,10 +14,12 @@ export default function Remembers({Remembers, setRemembers, typeofsort, Results}
         {(typeofsort == "All" ? Remembers : Results)?.map((remember)=>{
             const copytoclipboard = () => {
                 navigator.clipboard.writeText(remember.Value)
+                setPopUpValue("Copied to Clipboard")
             }
             const deleateRemember = () => {
                     const updatedUsers = Remembers?.filter(item => item.Id !== remember.Id);
                     setRemembers(updatedUsers)
+                    setPopUpValue("Deleated")
             }
             return(
                 <div key={remember.Id} id={`Remember${remember.Id}`} className="bg-surface text-text rounded-r-3xl rounded-l-md flex flex-row justify-center font-main border border-border">
