@@ -8,14 +8,9 @@
   "icons": [
     {
       "src": "/image.png",
-      "sizes": "192x192",
-      "type": "image/png"
-    },
-    {
-      "src": "/image.png",
-      "sizes": "512x512",
+      "sizes": "YOUR_ACTUAL_WIDTHxYOUR_ACTUAL_HEIGHT",
       "type": "image/png",
-      "purpose": "any maskable"
+      "purpose": "any"
     }
   ]
 }
