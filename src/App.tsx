@@ -28,7 +28,7 @@ export default function App() {
 
         <Routes>
           <Route path="/" element={<Home NewID={NewID} setNewID={setNewID} Remembers={Remembers} setRemembers={setRemembers}/>} />
-          <Route path="/search" element={<Search SearchInput={SearchInput} Remembers={Remembers} />} />
+          <Route path="/search" element={<Search SearchInput={SearchInput} Remembers={Remembers} setRemembers={setRemembers}/>} />
         </Routes>
       </BrowserRouter>
     </div>

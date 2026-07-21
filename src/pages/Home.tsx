@@ -48,7 +48,7 @@ export default function Home({NewID, setNewID, Remembers, setRemembers }: {NewID
         <div id="Remember-List-Holder">
           <h2 className="tracking-[0.03em] font-mono font-medium text-2xl ">REmembers</h2>
           <div id="Remember-List" className="flex flec-col mt-4 overflow-scroll scrollbar-none">
-            <RemembersComp Remembers={Remembers} setRemembers={setRemembers}/>
+            <RemembersComp Remembers={Remembers} setRemembers={setRemembers} Results={undefined} typeofsort={"All"}/>
           </div>
         </div>
       </div>
