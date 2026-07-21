@@ -10,7 +10,7 @@ export default function Remembers({Remembers, setRemembers, typeofsort, Results,
       useEffect(() => {
     hljs.highlightAll();
   });
-  return <div className="flex flex-col gap-3">
+  return <div className="flex flex-col gap-3 w-full">
         {(typeofsort == "All" ? Remembers : Results)?.map((remember)=>{
             const copytoclipboard = () => {
                 navigator.clipboard.writeText(remember.Value)
@@ -22,7 +22,7 @@ export default function Remembers({Remembers, setRemembers, typeofsort, Results,
                     setPopUpValue("Deleated")
             }
             return(
-                <div key={remember.Id} id={`Remember${remember.Id}`} className="bg-surface text-text rounded-r-3xl rounded-l-md flex flex-row justify-center font-main border border-border w-full">
+                <div key={remember.Id} id={`Remember${remember.Id}`} className="bg-surface text-text rounded-r-3xl rounded-l-md flex flex-row justify-start font-main border border-border w-full">
                     <span className="w-4 bg-brand inline-block rounded-l-md shrink-0 hover:bg-brand-hover"></span>
                     <div className="flex flex-col overflow-hidden p-3 gap-2">
                         
