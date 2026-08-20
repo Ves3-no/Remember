@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useRef, useState } from "react";
 import type { Dispatch, SetStateAction } from "react";
 import type { TypeofRemember, Remember } from "../types";
 
@@ -9,6 +9,7 @@ export default function Home({NewID, setNewID, Remembers, setRemembers, setPopUp
   const [Name, setName] = useState<string>("")
   const [Value, setValue] = useState<string>("")
   const [Type, setType] = useState<TypeofRemember>("Code")
+  const fileInput = useRef<any>(undefined)
   const createNewRemember = () =>{
     if(Name == "" || Value == "" || NewID == undefined ){
       return
@@ -23,6 +24,35 @@ export default function Home({NewID, setNewID, Remembers, setRemembers, setPopUp
     setValue("")
     setRemembers((prevRemembers) => [...(prevRemembers ?? []), NewRemember])
     setNewID(NewID+1)
+  }
+  function onImportClicked(){
+      fileInput.current.click();
+  }
+  function downloadJson(){
+    const jsonString = JSON.stringify(Remembers, null, 2);
+    const blob = new Blob([jsonString], { type: "application/json" });
+    const url = URL.createObjectURL(blob);
+    
+    const link = document.createElement("a");
+    link.href = url;
+    link.download = "data.json";
+    
+    link.click();
+    URL.revokeObjectURL(url); 
+  }
+  function handleUpload(e: FileList | null){
+    if(!e) return
+    const file = e[0]
+    const reader = new FileReader
+    reader.onload = (event)=>{
+      const Data = JSON.parse(event.target?.result as string)
+      setRemembers((prevRemembers) => {
+          if (Array.isArray(Data)) {
+            return [...(prevRemembers ?? []), ...Data];
+          }
+        });
+    }
+    reader.readAsText(file)
   }
   return <>
       <div id="Home" className="text-text font-main px-4 pt-6 flex flex-col scrollbar-none gap-4">
@@ -50,6 +80,11 @@ export default function Home({NewID, setNewID, Remembers, setRemembers, setPopUp
           <div id="Remember-List" className="flex flec-col mt-4 overflow-scroll scrollbar-none">
             <RemembersComp Remembers={Remembers} setRemembers={setRemembers} Results={undefined} typeofsort={"All"} setPopUpValue={setPopUpValue} />
           </div>
+        </div>
+        <div className="flex w-full justify-center gap-8">
+          <button onClick={downloadJson} className="bg-surface p-2.5 w-35 rounded-3xl text-sm hover:bg-surface-light cursor-pointer">Export</button>
+          <button onClick={onImportClicked} className="bg-surface p-2.5 w-35 rounded-3xl text-sm hover:bg-surface-light cursor-pointer">Import</button>
+          <input type="file" id="fileInput" style={{display: "none"}} ref={fileInput} onChange={(e) => handleUpload(e.currentTarget.files)} accept=".json,application/json"/>
         </div>
       </div>
   </>;
