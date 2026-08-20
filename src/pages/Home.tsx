@@ -81,7 +81,7 @@ export default function Home({NewID, setNewID, Remembers, setRemembers, setPopUp
             <RemembersComp Remembers={Remembers} setRemembers={setRemembers} Results={undefined} typeofsort={"All"} setPopUpValue={setPopUpValue} />
           </div>
         </div>
-        <div className="flex w-full justify-center gap-8">
+        <div className="flex w-full justify-center gap-8 mb-2.5">
           <button onClick={downloadJson} className="bg-surface p-2.5 w-35 rounded-3xl text-sm hover:bg-surface-light cursor-pointer">Export</button>
           <button onClick={onImportClicked} className="bg-surface p-2.5 w-35 rounded-3xl text-sm hover:bg-surface-light cursor-pointer">Import</button>
           <input type="file" id="fileInput" style={{display: "none"}} ref={fileInput} onChange={(e) => handleUpload(e.currentTarget.files)} accept=".json,application/json"/>
